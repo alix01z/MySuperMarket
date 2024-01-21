@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category_item_names_en">
+        <item>groceries</item>
+        <item>dairy</item>
+        <item>protein-foods</item>
+        <item>breakfast</item>
+        <item>beverages</item>
+        <item>ready-made-canned-food</item>
+        <item>dried-fruit-nuts</item>
+        <item>baby-and-mother</item>
+        <item>home-hygiene</item>
+        <item>personal-hygiene</item>
+        <item>dietary-and-medicinal-supplements</item>
+        <item>natural-flowers</item>
+        <item>snacks</item>
+        <item>fruits-and-vegetables</item>
+        <item>warm-drinks</item>
+        <item>salt-and-pickles</item>
+        <item>frozen-food</item>
+        <item>condiments</item>
+    </string-array>
+</resources>

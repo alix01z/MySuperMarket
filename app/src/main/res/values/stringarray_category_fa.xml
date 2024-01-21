@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category_item_names_fa">
+        <item>کالای اساسی و خواروبار</item>
+        <item>لبنیات</item>
+        <item>مواد پروتئینی و تخم مرغ</item>
+        <item>صبحانه</item>
+        <item>نوشیدنی های سرد</item>
+        <item>کنسرو و غذای آماده</item>
+        <item>خشکبار و شیرینی</item>
+        <item>مادر و کودک</item>
+        <item>بهداشت خانگی</item>
+        <item>بهداشت شخصی</item>
+        <item>مکمل غذایی و دارویی</item>
+        <item>گل طبیعی</item>
+        <item>تنقلات</item>
+        <item>میوه و سبزیجات</item>
+        <item>نوشیدنی های گرم</item>
+        <item>شور و ترشیچات</item>
+        <item>فرآورده های منجمد و یخچالی</item>
+        <item>افزودنی ها</item>
+    </string-array>
+</resources>

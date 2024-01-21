@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Super Market!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">خانه</string>
+    <string name="cart">سبد خرید</string>
+    <string name="profile">پروفایل</string>
+    <string name="category">دسته بندی</string>
+    <string name="profile_frag_orders">سفارش های من</string>
+    <string name="profile_frag_addresses">آدرس های من</string>
+    <string name="profile_frag_messages">پیام ها</string>
+    <string name="profile_frag_account">اطلاعات حساب کاربری</string>
+    <string name="profile_frag_support">ارتباط با پشتیبانی</string>
+    <string name="empty_inbox">شما هیچ پیام جدیدی ندارید!</string>
+    <string name="unnamed_road">معبر بی نام</string>
+    <string name="error_loading">مشکل در اتصال اینترنت!</string>
+    <string name="no_orders">شما تاکنون سفارشی نداشته اید!</string>
+    <string name="add_to_cart">افزودن به سبد خرید</string>
+    <string name="product_category">دسته بندی:</string>
+    <string name="specifications">مشخصات</string>
+    <string name="offer">تخفیفات \n شگفت انگیز!</string>
+    <string name="market_jet">مارکت جت</string>
+    <string name="market_plus">مارکت پلاس</string>
+    <string name="market_delivery">روش های ارسال</string>
+    <string name="market_counseling">مشاوره خرید</string>
+
+</resources>
