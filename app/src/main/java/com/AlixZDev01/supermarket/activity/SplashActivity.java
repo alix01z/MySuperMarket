@@ -61,5 +61,4 @@ public class SplashActivity extends AppCompatActivity {
         //       butRetry.setVisibility(View.VISIBLE);
         //      textCheckNet.setVisibility(View.VISIBLE);
         //    }
-
 }
