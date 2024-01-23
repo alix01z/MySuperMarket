@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.AlixZDev01.supermarket.R;
 import com.AlixZDev01.supermarket.adapter.SpecsAdapter;
 import com.AlixZDev01.supermarket.adapter.VPagerCProductAdapter;
+import com.AlixZDev01.supermarket.database.address_db.AddressEntity;
 import com.AlixZDev01.supermarket.database.cart_db.ProductDatabase;
 import com.AlixZDev01.supermarket.database.cart_db.ProductEntity;
 import com.AlixZDev01.supermarket.model.model_chosen_product.AttributesCP;
@@ -93,10 +94,22 @@ public class ChosenProductActivity extends AppCompatActivity {
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                productDB.getProductDao().addProduct(new ProductEntity(productCP.getId_CP() ,
-                        productCP.getTitle_fa_CP() , productCP.getImagesCP().getListCPList().get(0).getWebp_urlCPList().get(0) ,
-                        productCP.getDefaultVariantCP().getPriceCP().getSelling_price_CP()));
-                Toast.makeText(getApplicationContext(), "به سبد خرید اضافه شد", Toast.LENGTH_SHORT).show();
+                long rowID = productDB.getProductDao().addProduct(new ProductEntity(productCP.getId_CP() ,
+                                productCP.getTitle_fa_CP() , productCP.getImagesCP().getListCPList().get(0).getWebp_urlCPList().get(0) ,
+                                productCP.getDefaultVariantCP().getPriceCP().getSelling_price_CP()));
+                //Handle conflict ( adding duplicate button should increase amount of existing data , not add new data)
+                if (rowID > 0) {
+                    // Insert was successful
+                    Toast.makeText(getApplicationContext(), "به سبد خرید اضافه شد", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Handle conflict (adding duplicate button should increase the amount of existing data, not add new data)
+                    ProductEntity existingProduct = productDB.getProductDao().getProduct(productCP.getId_CP());
+                    if (existingProduct != null) {
+                        existingProduct.setAmount(existingProduct.getAmount() + 1);
+                        productDB.getProductDao().updateProduct(existingProduct);
+                        Toast.makeText(getApplicationContext(), "محصول تکراری، تعداد افزایش یافت", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
     }

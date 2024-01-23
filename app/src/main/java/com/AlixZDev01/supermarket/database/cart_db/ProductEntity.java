@@ -3,9 +3,10 @@ package com.AlixZDev01.supermarket.database.cart_db;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "table_cart")
+@Entity(tableName = "table_cart" , indices = {@Index(value = {"Product_ID"}, unique = true)})
 public class ProductEntity {
     @ColumnInfo(name = "ID")
     @PrimaryKey(autoGenerate = true)
@@ -22,6 +23,8 @@ public class ProductEntity {
 
     @ColumnInfo(name = "Selling_price")
     private int selling_price;
+    @ColumnInfo(name = "Amount")
+    private int amount;
 
     public ProductEntity(int product_ID, String title_fa, String webp_url, int selling_price) {
         this.id = 0;
@@ -29,6 +32,7 @@ public class ProductEntity {
         this.title_fa = title_fa;
         this.webp_url = webp_url;
         this.selling_price = selling_price;
+        this.amount = 1;
     }
 
     @Ignore
@@ -73,5 +77,13 @@ public class ProductEntity {
 
     public void setProduct_ID(int product_ID) {
         this.product_ID = product_ID;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }

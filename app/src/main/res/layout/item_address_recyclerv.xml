@@ -25,14 +25,6 @@
                 android:layout_weight="1"
                 android:src="@android:drawable/ic_menu_delete" />
 
-            <TextView
-                android:id="@+id/text_address_id"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold" />
         </LinearLayout>
 
         <TextView

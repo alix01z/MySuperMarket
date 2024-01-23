@@ -32,7 +32,6 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/persian_iran_sans_font"
                 android:gravity="center"
-                android:text="TextView"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -49,6 +48,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#FFFFFF"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:src="@android:drawable/ic_input_add" />
 
                 <TextView
@@ -70,7 +71,6 @@
                     android:layout_weight="4"
                     android:fontFamily="@font/persian_iran_sans_font"
                     android:gravity="left|center_vertical"
-                    android:text="TextView"
                     android:textColor="#000000" />
             </LinearLayout>
 

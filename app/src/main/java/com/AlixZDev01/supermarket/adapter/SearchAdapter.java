@@ -60,9 +60,17 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.imgbtnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                productDB.getProductDao().addProduct(new ProductEntity(productM.getId() , productM.getTitle_fa()
-                 , productM.getImagesM().getMain().getWebp_urlList().get(0)
-                 , productM.getDefaultVariantM().getPriceM().getSelling_price()));
+                long rowID = productDB.getProductDao().addProduct(new ProductEntity(productM.getId() ,
+                        productM.getTitle_fa() , productM.getImagesM().getMain().getWebp_urlList().get(0) ,
+                        productM.getDefaultVariantM().getPriceM().getSelling_price()));
+                //Handle conflict ( adding duplicate button should increase amount of existing data , not add new data)
+                if(rowID == -1){
+                    ProductEntity existingProduct = productDB.getProductDao().getProduct(productM.getId());
+                    if (existingProduct != null){
+                        existingProduct.setAmount(existingProduct.getAmount() + 1);
+                        productDB.getProductDao().updateProduct(existingProduct);
+                    }
+                }
                 Toast.makeText(context, "به سبد خرید اضافه شد", Toast.LENGTH_SHORT).show();
             }
         });

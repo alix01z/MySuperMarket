@@ -37,7 +37,6 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
     @Override
     public void onBindViewHolder(@NonNull AddressViewHolder holder, int position) {
         AddressEntity addressE = addressList.get(position);
-        holder.txtID.setText(String.valueOf(addressE.getAddressId()));
         holder.txtFormattedAddress.setText(addressE.getFormatted_address());
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,13 +56,11 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
     }
 
     static class AddressViewHolder extends RecyclerView.ViewHolder{
-        TextView txtID;
         TextView txtFormattedAddress;
         ImageButton btnDelete;
 
         public AddressViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtID = itemView.findViewById(R.id.text_address_id);
             txtFormattedAddress = itemView.findViewById(R.id.text_address_formatted_address);
             btnDelete = itemView.findViewById(R.id.btn_address_delete);
         }

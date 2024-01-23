@@ -30,7 +30,6 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View viewProfile = inflater.inflate(R.layout.fragment_profile , container , false);
         initViews(viewProfile);
-        Log.d("ProfileLifeCycle", "onCreateView: ");
         return  viewProfile;
     }
     private void initViews(View v){
@@ -68,54 +67,5 @@ public class ProfileFragment extends Fragment {
                 ft.commit();
             }
         });
-    }
-
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Log.d("ProfileLifeCycle" , "onViewCreate");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.d("ProfileLifeCycle" , "onStart");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d("ProfileLifeCycle" , "onResume");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.d("ProfileLifeCycle", "onPause: ");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.d("ProfileLifeCycle", "onStop: ");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.d("ProfileLifeCycle", "onDestroyView: ");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.d("ProfileLifeCycle", "onDestroy: ");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.d("ProfileLifeCycle", "onDetach: ");
     }
 }

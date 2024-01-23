@@ -11,12 +11,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.AlixZDev01.supermarket.R;
 import com.AlixZDev01.supermarket.activity.ChosenProductActivity;
 import com.AlixZDev01.supermarket.database.cart_db.ProductDatabase;
 import com.AlixZDev01.supermarket.database.cart_db.ProductEntity;
+import com.AlixZDev01.supermarket.fragment.CartFragment;
 import com.bumptech.glide.Glide;
 
 import java.text.NumberFormat;
@@ -27,11 +30,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     private Context context;
     private List<ProductEntity> productList;
     private ProductDatabase productDB;
+    private CartFragment cartFragment;
+    private FragmentManager fragmentManager;
 
-    public CartAdapter(Context context, List<ProductEntity> productList, ProductDatabase productDB) {
+    public CartAdapter(Context context, List<ProductEntity> productList, ProductDatabase productDB , CartFragment cartFragment ,
+                       FragmentManager fragmentManager) {
         this.context = context;
         this.productList = productList;
         this.productDB = productDB;
+        this.cartFragment = cartFragment;
+        this.fragmentManager = fragmentManager;
     }
 
     @NonNull
@@ -45,6 +53,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         ProductEntity productE = productList.get(position);
+        int totalCost = calculateTotalCost();
+        cartFragment.updateTotalCost(totalCost);
         holder.setDataInCartAdapter(productE , context , position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +72,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 productList.remove(adapterPositionAfterDelete);
                 notifyItemRemoved(adapterPositionAfterDelete);
                 notifyItemRangeChanged(adapterPositionAfterDelete , productList.size());
+                int newTotalCost = calculateTotalCost();
+                cartFragment.updateTotalCost(newTotalCost);
+                if (productList.size() == 0){
+                    FragmentTransaction ft = fragmentManager.beginTransaction();
+                    ft.replace(R.id.fragment_container , new CartFragment()).commit();
+                }
             }
         });
     }
@@ -76,6 +92,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         ImageView imgvCart;
         TextView txtvCartTitle;
         TextView txtvCartPrice;
+        TextView txtCartAmount;
         ImageButton imgbtnCartDelete;
 
         public CartViewHolder(@NonNull View itemView) {
@@ -84,11 +101,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             imgvCart = itemView.findViewById(R.id.imgv_cart_product);
             txtvCartPrice = itemView.findViewById(R.id.txt_cart_product_price);
             txtvCartTitle = itemView.findViewById(R.id.txt_cart_product_title);
+            txtCartAmount = itemView.findViewById(R.id.txt_cart_amount);
             imgbtnCartDelete = itemView.findViewById(R.id.imgbtn_cart_delete);
+
         }
         public void setDataInCartAdapter(ProductEntity productE , Context context , int position){
             txtvCartTitle.setText(productE.getTitle_fa());
-            txtvCartPrice.setText(formatPrice(productE.getSelling_price()));
+            txtvCartPrice.setText(formatPrice(productE.getSelling_price() * productE.getAmount()));
+            txtCartAmount.setText(String.valueOf(productE.getAmount()));
             Glide.with(context)
                     .load(productE.getWebp_url())
                     .into(imgvCart);
@@ -97,5 +117,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             NumberFormat numberFormat = NumberFormat.getNumberInstance(new Locale("fa"));
             return numberFormat.format(number / 10);
         }
+    }
+    public int calculateTotalCost() {
+        int totalCost = 0;
+        for (ProductEntity product : productList) {
+            totalCost += (product.getSelling_price() * product.getAmount());
+        }
+        return totalCost;
     }
 }

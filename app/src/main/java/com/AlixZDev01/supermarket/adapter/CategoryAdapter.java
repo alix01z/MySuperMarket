@@ -43,8 +43,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         CategoryItemModel cateModel = categorylist.get(position);
-        holder.imageViewC.setImageResource(cateModel.getImagCate());
-        holder.textViewC.setText(cateModel.getTxtCate_fa());
+        holder.imgvCate.setImageResource(cateModel.getImagCate());
+        holder.txtCateName.setText(cateModel.getTxtCate_fa());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,15 +66,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     }
 
     static class CategoryViewHolder extends RecyclerView.ViewHolder{
-        CardView cardViewC;
-        ImageView imageViewC;
-        TextView textViewC;
+        CardView cardvCate;
+        ImageView imgvCate;
+        TextView txtCateName;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardViewC = itemView.findViewById(R.id.cv_category);
-            imageViewC = itemView.findViewById(R.id.imgv_cv_category);
-            textViewC = itemView.findViewById(R.id.textv_cv_category);
+            cardvCate = itemView.findViewById(R.id.cv_category);
+            imgvCate = itemView.findViewById(R.id.imgv_cv_category);
+            txtCateName = itemView.findViewById(R.id.textv_cv_category);
         }
     }
 }

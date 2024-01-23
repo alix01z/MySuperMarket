@@ -39,7 +39,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/persian_iran_sans_font"
                         android:gravity="center_vertical"
-                        android:text="علی زمانپور"
+                        android:text="نام کاربری"
                         android:textColor="@color/white"
                         android:textDirection="rtl"
                         android:textSize="24sp" />
@@ -54,7 +54,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/persian_iran_sans_font"
                         android:gravity="center_vertical"
-                        android:text="09380847977"
+                        android:text="شماره تلفن"
                         android:textColor="@color/white"
                         android:textDirection="rtl"
                         android:textSize="16sp" />
