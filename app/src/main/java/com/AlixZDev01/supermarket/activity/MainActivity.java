@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.AlixZDev01.supermarket.R;
 import com.AlixZDev01.supermarket.fragment.AddressFragment;
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        bottomNav = findViewById(R.id.bottom_navigation_view);
+        bottomNav.setOnItemSelectedListener(naviListener);
 
         String destFragment = getIntent().getStringExtra("destFragment");
         if(Objects.equals(destFragment, "AddressF")){
@@ -44,11 +48,9 @@ public class MainActivity extends AppCompatActivity {
             homeFragment = new HomeFragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container , homeFragment , tagFragment).commit();
+            bottomNav.setSelectedItemId(R.id.home_navi_bar);
         }
-        bottomNav = findViewById(R.id.bottom_navigation_view);
-        bottomNav.setOnItemSelectedListener(naviListener);
     }
-
 
     private NavigationBarView.OnItemSelectedListener naviListener =
             new NavigationBarView.OnItemSelectedListener() {
@@ -74,7 +76,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container , selectedFragment , tagFragment).commit();
-                    return false;
+                    return true;
                 }
             };
+    public void notAvailableToast(View v){
+        Toast.makeText(this,  "در حال حاضر این قابلیت فعال نمی باشد", Toast.LENGTH_SHORT).show();
+    }
 }

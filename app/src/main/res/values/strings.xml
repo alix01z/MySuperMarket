@@ -23,5 +23,6 @@
     <string name="market_plus">مارکت پلاس</string>
     <string name="market_delivery">روش های ارسال</string>
     <string name="market_counseling">مشاوره خرید</string>
+    <string name="option_not_available">در حال حاضر، این قابلیت فعال نمی باشد</string>
 
 </resources>

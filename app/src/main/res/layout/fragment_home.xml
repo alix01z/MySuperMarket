@@ -89,6 +89,7 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:onClick="notAvailableToast"
                     android:orientation="vertical">
 
                     <ImageView
@@ -120,6 +121,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:onClick="notAvailableToast"
                     android:orientation="vertical">
 
                     <ImageView
@@ -152,6 +154,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:onClick="notAvailableToast"
                     android:orientation="vertical">
 
                     <ImageView
@@ -185,6 +188,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:onClick="notAvailableToast"
                     android:orientation="vertical">
 
                     <ImageView
@@ -230,7 +234,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/img_homeadds2_1"
+                    android:id="@+id/imgv_homeadds2_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -240,7 +244,7 @@
                     app:shapeAppearanceOverlay="@style/roundedImageView" />
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/img_homeadds2_2"
+                    android:id="@+id/imgv_homeadds2_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -259,7 +263,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/img_homeadds2_3"
+                    android:id="@+id/imgv_homeadds2_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -269,7 +273,7 @@
                     app:shapeAppearanceOverlay="@style/roundedImageView" />
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/img_homeadds2_4"
+                    android:id="@+id/imgv_homeadds2_4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"

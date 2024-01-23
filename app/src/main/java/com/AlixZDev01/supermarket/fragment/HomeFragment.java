@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,8 +38,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    SearchFragment searchFragment = new SearchFragment();
-    FragmentTransaction ft;
+    private SearchFragment searchFragment = new SearchFragment();
+    private SelectedCategoryFragment selectedCategoryFragment = new SelectedCategoryFragment();
+    private Bundle bundleSendData;
+    private FragmentTransaction ft;
     private List<ImageModel> imgList;
     private RelativeLayout relativeSearch;
     private ViewPager2 viewPagerHome;
@@ -56,8 +60,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View viewHome = inflater.inflate(R.layout.fragment_home , container , false);
         initViews(viewHome);
         getOfferData();
-        relativeSearch = viewHome.findViewById(R.id.relative_gotosearch);
-        relativeSearch.setOnClickListener(this);
         return viewHome;
     }
     private void initViews(View v){
@@ -65,6 +67,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         viewPagerHome = v.findViewById(R.id.viewpager_home);
         wormDotsIndicator = v.findViewById(R.id.worm_dots_indicator_home);
         recyclerOffer = v.findViewById(R.id.recyclerv_home_offer);
+        relativeSearch = v.findViewById(R.id.relative_gotosearch);
+        imgHomeAdds2_1 = v.findViewById(R.id.imgv_homeadds2_1);
+        imgHomeAdds2_2 = v.findViewById(R.id.imgv_homeadds2_2);
+        imgHomeAdds2_3 = v.findViewById(R.id.imgv_homeadds2_3);
+        imgHomeAdds2_4 = v.findViewById(R.id.imgv_homeadds2_4);
         bNavigationView = getActivity().findViewById(R.id.bottom_navigation_view);
         bNavigationView.setVisibility(View.VISIBLE);
         //initialize ViewPager & Adapter & Contents
@@ -78,15 +85,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerOffer.setAdapter(offerAdapter);
         //init Listeners
         relativeSearch.setOnClickListener(this);
-        relativeSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ft = getParentFragmentManager().beginTransaction();
-                ft.replace(R.id.fragment_container, searchFragment , "SearchF");
-                ft.addToBackStack(null);
-                ft.commit();
-            }
-        });
+        imgHomeAdds2_1.setOnClickListener(this);
+        imgHomeAdds2_2.setOnClickListener(this);
+        imgHomeAdds2_3.setOnClickListener(this);
+        imgHomeAdds2_4.setOnClickListener(this);
     }
     private void getOfferData(){
         String url = "https://api.digikala.com/v1/categories/food-beverage/";
@@ -120,10 +122,37 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         imgList.add(new ImageModel(R.drawable.home_adds1_4 , "breakfast"));
         viewPagerHome.setAdapter(new VPagerHomeAdapter(imgList , getContext() , requireActivity().getSupportFragmentManager()));
     }
-
+    //init Listeners
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-            case R.id.
+        if (v.getId() == R.id.relative_gotosearch) {
+            ft = getParentFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment_container, searchFragment, "SearchF")
+                    .addToBackStack(null)
+                    .commit();
+        }
+        else if (v.getId() == R.id.imgv_homeadds2_1){
+            sendDataToCategoryFragment("baby-and-mother");
+        }
+        else if (v.getId() == R.id.imgv_homeadds2_2){
+            sendDataToCategoryFragment("snacks");
+        }
+        else if (v.getId() == R.id.imgv_homeadds2_3){
+            sendDataToCategoryFragment("diary");
+        }
+        else if (v.getId() == R.id.imgv_homeadds2_4){
+            sendDataToCategoryFragment("personal-hygiene");
+        }
+
+    }
+    private void sendDataToCategoryFragment(String content){
+        selectedCategoryFragment = new SelectedCategoryFragment();
+        bundleSendData = new Bundle();
+        bundleSendData.putString("ClickedItem" , content);
+        selectedCategoryFragment.setArguments(bundleSendData);
+        ft = getParentFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container , selectedCategoryFragment , "SelectedCategoryF")
+                .addToBackStack(null)
+                .commit();
     }
 }
