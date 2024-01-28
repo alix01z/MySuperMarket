@@ -4,6 +4,7 @@
 اسکرین شات های اپ:
 
 ![SuperMarketApp_Sc1](https://github.com/alix01z/SuperMarketApp/assets/69985893/fa405788-2dc9-42d5-acab-3c771a4d5405)
+<img src="[https://github.com/favicon.ico](https://github.com/alix01z/SuperMarketApp/assets/69985893/fa405788-2dc9-42d5-acab-3c771a4d5405)" width="48">
 ![SuperMarketApp_Sc2](https://github.com/alix01z/SuperMarketApp/assets/69985893/6e2e451c-9ee9-41cd-a8f1-94e805a467cd)
 ![SuperMarketApp_Sc3](https://github.com/alix01z/SuperMarketApp/assets/69985893/0374eb4d-9e16-45b9-a767-5290dc2773ff)
 ![SuperMarketApp_Sc4](https://github.com/alix01z/SuperMarketApp/assets/69985893/a966a9e9-a6af-457b-9cb0-e3286dd09044)
