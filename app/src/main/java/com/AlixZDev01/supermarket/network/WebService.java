@@ -14,6 +14,6 @@ public interface WebService {
     Call<ProductSearchM> getSearchResults(@Query("q") String searchPhrase);
     @GET("search/")
     Call<ProductSearchM> getInputResults();
-    @GET("v1/product/{productID}/")
+    @GET("v2/product/{productID}/")
     Call<ChosenPModel> getChosenProductData(@Path("productID") String productID);
 }
