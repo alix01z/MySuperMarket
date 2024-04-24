@@ -1,8 +1,13 @@
 # MySuperMarket
 
-This is a sample of E-Commerce application which I designed with a user interface similar to Digikala."
+This is a sample of E-Commerce application which I designed with a user interface similar to @Digikala.
+"MySuperMarket" gets products info from @Digikala API & gets user address from @Neshan API through Retrofit & stores all data in Room Database (Currently no back-end is used in this app). 
 
-### ScreenShots
+This project wil be updated soon (App will be redesigned & many of codes will be refactored) , Stay alert!"
+
+Note:This app is not intended for business use.
+
+### ScreenShots:
 <img src="https://github.com/alix01z/SuperMarketApp/assets/69985893/ce536c07-7e9f-4617-83cb-b1f7a34fa105" width="200">
 <img src="https://github.com/alix01z/SuperMarketApp/assets/69985893/eb152ebd-73f0-4fc2-83ff-518bc506f611" width="200">
 <img src="https://github.com/alix01z/SuperMarketApp/assets/69985893/aaceb228-0637-4b60-a0a0-43127da9ec27" width="200">
