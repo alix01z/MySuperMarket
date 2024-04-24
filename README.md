@@ -3,7 +3,7 @@
 This is a sample of E-Commerce application which I designed with a user interface similar to @Digikala.
 "MySuperMarket" gets products info from @Digikala API & gets user address from @Neshan API through Retrofit & stores all data in Room Database (Currently no back-end is used in this app). 
 
-This project wil be updated soon (App will be redesigned & many of codes will be refactored) , Stay alert!"
+This project wil be updated soon (App will be redesigned & many of codes will be refactored) , Stay alert!
 
 Note:This app is not intended for business use.
 
